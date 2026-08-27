@@ -1,0 +1,48 @@
+import pandas as pd
+import os
+
+def calculate_daily_kpis(df):
+    print("Calculating daily KPIs...")
+    kpi_df = df.copy()
+    
+    # Ensure date is the index for time-series operations
+    if 'date' in kpi_df.columns:
+        kpi_df['date'] = pd.to_datetime(kpi_df['date'])
+        kpi_df.set_index('date', inplace=True)
+    
+    # 1. Day-over-Day (DoD) Growth Metrics
+    # Using pct_change() to see how much a metric changed compared to yesterday
+    kpi_df['revenue_growth_dod'] = kpi_df['revenue'].pct_change()
+    kpi_df['orders_growth_dod'] = kpi_df['orders'].pct_change()
+    kpi_df['traffic_growth_dod'] = kpi_df['website_traffic'].pct_change()
+    
+    # 2. Rolling Averages (7-day baseline)
+    # This smooths out the weekend dips so we can spot genuine anomalies later
+    kpi_df['revenue_7d_avg'] = kpi_df['revenue'].rolling(window=7).mean()
+    kpi_df['conversion_7d_avg'] = kpi_df['conversion_rate'].rolling(window=7).mean()
+    
+    # Fill the first few days of NaN values (caused by rolling/pct_change) with 0
+    kpi_df = kpi_df.fillna(0)
+    
+    return kpi_df
+
+if __name__ == "__main__":
+    INPUT_FILE = "data/processed/cleaned_business_data.csv"
+    OUTPUT_FILE = "data/processed/kpi_data.csv"
+    
+    # Load clean data
+    if os.path.exists(INPUT_FILE):
+        df = pd.read_csv(INPUT_FILE)
+        
+        # Calculate KPIs
+        kpi_df = calculate_daily_kpis(df)
+        
+        # Save KPI data
+        kpi_df.to_csv(OUTPUT_FILE)
+        print(f"✅ KPI calculations complete. Saved to {OUTPUT_FILE}")
+        
+        # Preview the new columns
+        print("\nPreview of new KPI columns:")
+        print(kpi_df[['revenue', 'revenue_growth_dod', 'revenue_7d_avg']].head(10))
+    else:
+        print(f"❌ Error: Could not find {INPUT_FILE}. Run data_cleaning.py first.")

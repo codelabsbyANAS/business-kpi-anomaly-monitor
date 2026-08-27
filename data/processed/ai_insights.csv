@@ -1,0 +1,109 @@
+date,is_anomaly,severity,business_impact_context,revenue,orders,website_traffic,conversion_rate,ad_spend,refund_rate,revenue_growth_dod,ai_summary
+2023-06-15,1,CRITICAL,Conversion rate dropped by 78.0% compared to the 14-day baseline. This drop coincides with a >10% daily revenue decline. The traffic is not converting.,2190.82,28,5762,0.005,1163.91,0.0354,-0.8033352274308407,"1. Executive Summary:
+A CRITICAL anomaly was detected on 2023-06-15.
+
+2. Key Findings:
+Conversion rate dropped by 78.0% compared to the 14-day baseline. This drop coincides with a >10% daily revenue decline. The traffic is not converting.
+
+3. Potential Business Impact:
+KPIs affected: Revenue ($2190.82), Traffic (5762), Conversion (0.50%).
+This deviation requires immediate attention to prevent further metric degradation.
+
+4. Recommended Investigation Areas:
+Please review traffic sources, recent website deployments, product quality reports, and ad spend allocations."
+2023-09-05,1,CRITICAL,"Advertising spend spiked by 128.5% above normal levels. Website traffic did not show a proportional increase, indicating potential ad spend waste or platform glitch.",9432.09,150,5887,0.0256,3070.72,0.0395,-0.1178820767730802,"1. Executive Summary:
+A CRITICAL anomaly was detected on 2023-09-05.
+
+2. Key Findings:
+Advertising spend spiked by 128.5% above normal levels. Website traffic did not show a proportional increase, indicating potential ad spend waste or platform glitch.
+
+3. Potential Business Impact:
+KPIs affected: Revenue ($9432.09), Traffic (5887), Conversion (2.56%).
+This deviation requires immediate attention to prevent further metric degradation.
+
+4. Recommended Investigation Areas:
+Please review traffic sources, recent website deployments, product quality reports, and ad spend allocations."
+2023-10-31,1,CRITICAL,Conversion rate dropped by 19.5% compared to the 14-day baseline. This drop coincides with a >10% daily revenue decline. The traffic is not converting.,9779.5,125,6370,0.0197,1309.75,0.022,-0.290430479673204,"1. Executive Summary:
+A CRITICAL anomaly was detected on 2023-10-31.
+
+2. Key Findings:
+Conversion rate dropped by 19.5% compared to the 14-day baseline. This drop coincides with a >10% daily revenue decline. The traffic is not converting.
+
+3. Potential Business Impact:
+KPIs affected: Revenue ($9779.5), Traffic (6370), Conversion (1.97%).
+This deviation requires immediate attention to prevent further metric degradation.
+
+4. Recommended Investigation Areas:
+Please review traffic sources, recent website deployments, product quality reports, and ad spend allocations."
+2023-11-20,1,CRITICAL,"Refund rate spiked to 10.3%, which is 7.1 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.",13582.0,178,6749,0.0264,1342.63,0.1029,0.3486086949614342,"1. Executive Summary:
+A CRITICAL anomaly was detected on 2023-11-20.
+
+2. Key Findings:
+Refund rate spiked to 10.3%, which is 7.1 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.
+
+3. Potential Business Impact:
+KPIs affected: Revenue ($13582.0), Traffic (6749), Conversion (2.64%).
+This deviation requires immediate attention to prevent further metric degradation.
+
+4. Recommended Investigation Areas:
+Please review traffic sources, recent website deployments, product quality reports, and ad spend allocations."
+2023-11-21,1,CRITICAL,"Refund rate spiked to 9.5%, which is 6.3 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.",11415.26,158,6133,0.0259,1292.42,0.095,-0.1595302606390811,"1. Executive Summary:
+A CRITICAL anomaly was detected on 2023-11-21.
+
+2. Key Findings:
+Refund rate spiked to 9.5%, which is 6.3 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.
+
+3. Potential Business Impact:
+KPIs affected: Revenue ($11415.26), Traffic (6133), Conversion (2.59%).
+This deviation requires immediate attention to prevent further metric degradation.
+
+4. Recommended Investigation Areas:
+Please review traffic sources, recent website deployments, product quality reports, and ad spend allocations."
+2023-11-22,1,CRITICAL,"Refund rate spiked to 8.1%, which is 4.9 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.",10603.0,148,6096,0.0243,1294.77,0.0808,-0.0711556285183167,"1. Executive Summary:
+A CRITICAL anomaly was detected on 2023-11-22.
+
+2. Key Findings:
+Refund rate spiked to 8.1%, which is 4.9 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.
+
+3. Potential Business Impact:
+KPIs affected: Revenue ($10603.0), Traffic (6096), Conversion (2.43%).
+This deviation requires immediate attention to prevent further metric degradation.
+
+4. Recommended Investigation Areas:
+Please review traffic sources, recent website deployments, product quality reports, and ad spend allocations."
+2023-11-23,1,CRITICAL,"Refund rate spiked to 9.5%, which is 6.4 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.",13402.13,179,6575,0.0273,1322.31,0.0951,0.2639941525983211,"1. Executive Summary:
+A CRITICAL anomaly was detected on 2023-11-23.
+
+2. Key Findings:
+Refund rate spiked to 9.5%, which is 6.4 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.
+
+3. Potential Business Impact:
+KPIs affected: Revenue ($13402.13), Traffic (6575), Conversion (2.73%).
+This deviation requires immediate attention to prevent further metric degradation.
+
+4. Recommended Investigation Areas:
+Please review traffic sources, recent website deployments, product quality reports, and ad spend allocations."
+2023-11-24,1,CRITICAL,"Refund rate spiked to 9.8%, which is 6.6 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.",11967.82,148,6505,0.0228,1251.26,0.0979,-0.1070210481468243,"1. Executive Summary:
+A CRITICAL anomaly was detected on 2023-11-24.
+
+2. Key Findings:
+Refund rate spiked to 9.8%, which is 6.6 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.
+
+3. Potential Business Impact:
+KPIs affected: Revenue ($11967.82), Traffic (6505), Conversion (2.28%).
+This deviation requires immediate attention to prevent further metric degradation.
+
+4. Recommended Investigation Areas:
+Please review traffic sources, recent website deployments, product quality reports, and ad spend allocations."
+2023-11-25,1,CRITICAL,"Refund rate spiked to 11.5%, which is 8.4 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.",11502.26,148,5676,0.0262,1228.37,0.1154,-0.0389009861445108,"1. Executive Summary:
+A CRITICAL anomaly was detected on 2023-11-25.
+
+2. Key Findings:
+Refund rate spiked to 11.5%, which is 8.4 standard deviations above the yearly average. High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.
+
+3. Potential Business Impact:
+KPIs affected: Revenue ($11502.26), Traffic (5676), Conversion (2.62%).
+This deviation requires immediate attention to prevent further metric degradation.
+
+4. Recommended Investigation Areas:
+Please review traffic sources, recent website deployments, product quality reports, and ad spend allocations."
