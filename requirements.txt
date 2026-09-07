@@ -6,5 +6,4 @@ matplotlib
 seaborn
 plotly
 streamlit
-python-dotenv
-openai
+requests

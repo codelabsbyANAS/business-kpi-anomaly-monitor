@@ -1,10 +1,6 @@
 import os
 import pandas as pd
-from dotenv import load_dotenv
-from openai import OpenAI
-
-# Load environment variables
-load_dotenv()
+import requests
 
 def generate_fallback_summary(row):
     """Deterministic fallback if AI API fails or key is missing."""
@@ -24,8 +20,8 @@ This deviation requires immediate attention to prevent further metric degradatio
 Please review traffic sources, recent website deployments, product quality reports, and ad spend allocations.
 """
 
-def generate_ai_insight(row, client=None):
-    if not client:
+def generate_ai_insight(row, use_ai=False):
+    if not use_ai:
         return generate_fallback_summary(row).strip()
         
     date_str = row.name.date() if hasattr(row.name, 'date') else row.name
@@ -51,16 +47,21 @@ def generate_ai_insight(row, client=None):
     """
     
     try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo", 
-            messages=[
-                {"role": "system", "content": "You are a highly analytical and concise business data assistant."},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=300,
-            temperature=0.2 # Low temperature to prevent hallucination
+        response = requests.post(
+            "http://localhost:11434/api/generate",
+            json={
+                "model": "llama3.2:1b",
+                "system": "You are a highly analytical and concise business data assistant.",
+                "prompt": prompt,
+                "stream": False,
+                "options": {
+                    "temperature": 0.2
+                }
+            },
+            timeout=60
         )
-        return response.choices[0].message.content.strip()
+        response.raise_for_status()
+        return response.json()['response'].strip()
     except Exception as e:
         print(f"⚠️ AI API Failed: {e}. Switching to fallback.")
         return generate_fallback_summary(row).strip()
@@ -69,13 +70,16 @@ if __name__ == "__main__":
     INPUT_FILE = "data/processed/scored_anomalies.csv"
     OUTPUT_FILE = "data/processed/ai_insights.csv"
     
-    api_key = os.getenv("OPENAI_API_KEY")
-    # Initialize OpenAI client only if a real key is provided
-    client = OpenAI(api_key=api_key) if api_key and api_key != "your_api_key_here_if_you_have_one" else None
+    use_ai = False
+    try:
+        if requests.get("http://localhost:11434/").status_code == 200:
+            use_ai = True
+    except:
+        pass
     
-    if not client:
-        print("⚠️ No valid OPENAI_API_KEY found in .env file.")
-        print("🔄 Using robust deterministic fallback generator instead (Perfect for local testing!).\n")
+    if not use_ai:
+        print("⚠️ Local Ollama instance not found at http://localhost:11434/ (or not running).")
+        print("🔄 Using robust deterministic fallback generator instead.\n")
     
     if os.path.exists(INPUT_FILE):
         df = pd.read_csv(INPUT_FILE)
@@ -88,7 +92,7 @@ if __name__ == "__main__":
         print(f"Generating insights for {len(criticals)} CRITICAL anomalies...")
         
         # Apply the AI/Fallback function to each critical row
-        criticals['ai_summary'] = criticals.apply(lambda row: generate_ai_insight(row, client), axis=1)
+        criticals['ai_summary'] = criticals.apply(lambda row: generate_ai_insight(row, use_ai), axis=1)
         
         criticals.to_csv(OUTPUT_FILE)
         print(f"✅ Interpretation complete! Saved to {OUTPUT_FILE}")

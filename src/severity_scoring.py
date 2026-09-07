@@ -43,8 +43,10 @@ def score_anomalies(df):
                 impact_text.append("High risk of customer dissatisfaction. Potential product quality or shipping issue requires immediate investigation.")
         
         severities.append(severity)
-        impacts.append(" ".join(impact_text))
         
+        # Deduplicate phrases while preserving order to prevent repeated sentences
+        unique_impact_text = list(dict.fromkeys(impact_text))
+        impacts.append(" ".join(unique_impact_text))
     anomalies['severity'] = severities
     anomalies['business_impact_context'] = impacts
     
